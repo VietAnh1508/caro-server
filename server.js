@@ -10,6 +10,8 @@ let players = new Players();
 io.on("connection", socket => {
   console.log(`${socket.id} was connected`);
 
+  socket.emit("showRoomList", players.getRoomList());
+
   socket.on("newUserJoin", (data, callback) => {
     let onlineUserList = players.getPlayerList(data.room);
 
